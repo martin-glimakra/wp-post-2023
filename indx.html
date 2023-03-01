@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="martin-div"></div>
+    <script>
+
+        let WP_URL = 'https://demo.krokedil.se/klarnacheckout/'
+        WP_URL = 'http://localhost:10134/'
+
+        async function fetchWpJSON() {
+        const response = await fetch(WP_URL + 'wp-json/wp/v2/posts');
+        const data = await response.json();
+        console.log(data[0].content.rendered);
+        document.getElementById("martin-div").innerHTML = data[0].content.rendered
+    }
+
+    fetchWpJSON()
+
+    </script>
+</body>
+</html>
